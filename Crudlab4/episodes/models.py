@@ -1,0 +1,7 @@
+from django.db import models
+from django.core.validators import FileExtensionValidator
+
+class Episodes(models.Model):
+    title = models.CharField(max_length=255)
+    video = models.FileField(upload_to='uploads/video_files', validators= [FileExtensionValidator(allowed_extensions=['mp4'])])
+    thumbnail = models.FileField(upload_to='uploads/thumbnails', validators= [FileExtensionValidator(allowed_extensions=['png', 'jpg', 'jpeg'])])

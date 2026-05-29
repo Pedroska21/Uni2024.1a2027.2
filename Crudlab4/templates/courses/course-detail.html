@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<img src="{{course.banner.url}}" width="500" height="auto" align="left">
+<div class="pos">
+<div class=" border">
+    <h2 class="card-title">{{course.name}}</h2>
+    <p class="card-text">{{course.description}}</p>
+  </div>
+  <div>
+    <div class="card-body">
+    <ul>
+      {% for episodes in course.episode.all %}
+      <h5 class="card-title">
+         {{ episodes.title }}  - <video width="320" height="240" controls> <source src="{{ episodes.video.url}}"></video> <br><br>
+      </h5>
+         {% endfor %}
+    </ul>
+   </div>
+  </div>
+{% endblock content %}

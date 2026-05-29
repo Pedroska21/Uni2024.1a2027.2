@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+  
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if user.is_authenticated%}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/logout">Desconectar</a>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/login">Conectar</a>
+        </li>
+        {% endif %}
+      </ul>
+    </li>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/cursos">Cursos</a>
+        </li>
+      </ul>
+    {% if user.is_authenticated %}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href= "{% url 'cursos:create-course' %}">Adicionar cursos</a>
+        </li>
+      </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'episodios:create-episode' %}">Adicionar Episodios</a>
+        </li>
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</nav>
+
+<main class"py-4">
+    <div class="container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</main>
+</body>
+</html>
